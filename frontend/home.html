@@ -3,24 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EconoBudget - Smart Budget Management</title>
+    <title>EcoBudget - Smart Budget Management</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 EconoBudget</h1>
+            <h1>📊 EcoBudget</h1>
             <p>Smart Budget Management with Microeconomic Principles</p>
-        </div>
-
-        <!-- Emergency Fund Alert -->
-        <div class="emergency-fund" id="emergency-alert" style="display: none;">
-            <h4>🚨 Emergency Fund Status</h4>
-            <p id="emergency-message"></p>
-            <div class="emergency-progress">
-                <div class="emergency-fill" id="emergency-fill"></div>
-            </div>
         </div>
 
         <!-- Tabs -->
@@ -42,7 +33,7 @@
                     </div>
                     <div class="input-group">
                         <label for="monthly-income">Enter your monthly income:</label>
-                        <input type="number" id="monthly-income" placeholder="e.g., 5000" step="0.01">
+                        <input type="number" id="monthly-income" placeholder="5000 $" step="0.01">
                     </div>
                     <button class="btn" onclick="updateIncome()">Update Income</button>
                 </div>
@@ -80,7 +71,7 @@
                     </div>
                     <div class="input-group">
                         <label for="expense-amount">Amount:</label>
-                        <input type="number" id="expense-amount" placeholder="e.g., 500" step="0.01">
+                        <input type="number" id="expense-amount" placeholder="500 $" step="0.01">
                     </div>
                     <button class="btn" onclick="addExpense()">Add Expense</button>
                     
@@ -146,9 +137,9 @@
                     </div>
                     <div class="input-group">
                         <label for="bank-balance">Current Bank Balance ($):</label>
-                        <input type="number" id="bank-balance" placeholder="e.g., 10000" step="0.01">
+                        <input type="number" id="bank-balance" placeholder="10000 $" step="0.01">
                     </div>
-                    <button class="btn" onclick="updateBankBalance()">Update Balance</button>
+                    <button class="btn" onclick="updateBankBalance()">Current Balance</button>
                     
                     <div style="margin-top: 20px;">
                         <div class="stat-item">
@@ -158,22 +149,22 @@
                     </div>
 
                     <!-- Collapsible Deposit Section -->
-                    <button class="collapsible" onclick="toggleCollapsible(this)">💎 Add New Deposit</button>
+                    <button class="collapsible" onclick="toggleCollapsible(this)">💎 Fixed Deposit</button>
                     <div class="collapsible-content">
                         <div class="two-column">
                             <div class="input-group">
-                                <label for="deposit-amount">Deposit Amount ($):</label>
-                                <input type="number" id="deposit-amount" placeholder="e.g., 5000" step="0.01">
+                                <label for="deposit-amount">Deposit Amount</label>
+                                <input type="number" id="deposit-amount" placeholder="5000 $" step="0.01">
                             </div>
                             <div class="input-group">
-                                <label for="interest-rate">Interest Rate (%):</label>
-                                <input type="number" id="interest-rate" placeholder="e.g., 3.5" step="0.01">
+                                <label for="interest-rate">Interest Rate</label>
+                                <input type="number" id="interest-rate" placeholder="3.5 %" step="0.01">
                             </div>
                         </div>
                         <div class="two-column">
                             <div class="input-group">
-                                <label for="deposit-term">Term (Years):</label>
-                                <input type="number" id="deposit-term" placeholder="e.g., 2" step="0.1">
+                                <label for="deposit-term">Term (Years)</label>
+                                <input type="number" id="deposit-term" placeholder=" 2" step="0.1">
                             </div>
                             <div class="input-group">
                                 <label for="deposit-type">Deposit Type:</label>
@@ -194,29 +185,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon investment-icon">📈</div>
-                        <h3>Stock Investments</h3>
+                        <h3>Stock Analysis</h3>
                     </div>
                     <div class="two-column">
                         <div class="input-group">
                             <label for="stock-symbol">Stock Symbol:</label>
-                            <input type="text" id="stock-symbol" placeholder="e.g., AAPL" style="text-transform: uppercase;">
+                            <input type="text" id="stock-symbol" placeholder="AAPL" style="text-transform: uppercase;">
                         </div>
                         <div class="input-group">
                             <label for="stock-shares">Number of Shares:</label>
-                            <input type="number" id="stock-shares" placeholder="e.g., 10" step="0.01">
+                            <input type="number" id="stock-shares" placeholder="10 $" step="0.01">
                         </div>
                     </div>
                     <div class="two-column">
                         <div class="input-group">
                             <label for="stock-price">Purchase Price per Share ($):</label>
-                            <input type="number" id="stock-price" placeholder="e.g., 150.00" step="0.01">
+                            <input type="number" id="stock-price" placeholder="150.00 $" step="0.01">
                         </div>
                         <div class="input-group">
                             <label for="stock-current-price">Current Price per Share ($):</label>
-                            <input type="number" id="stock-current-price" placeholder="e.g., 155.00" step="0.01">
+                            <input type="number" id="stock-current-price" placeholder="155.00 $" step="0.01">
                         </div>
+                       
                     </div>
-                    <button class="btn" onclick="addStock()">Add Stock</button>
+                    <button class="btn" onclick="addStock()">Count Stock</button>
                     
                     <div id="stocks-list" style="margin-top: 20px;"></div>
                     
@@ -237,6 +229,9 @@
                             <div class="stat-value" id="portfolio-return">0%</div>
                             <div class="stat-label">Portfolio Return</div>
                         </div>
+                        
+                        <a href="stock2.html" class="button">Current Price</a>
+                    
                     </div>
                 </div>
             </div>
@@ -245,7 +240,7 @@
         <!-- Budget Tracking Tab -->
         <div id="budget-tab" class="tab-content">
             <div class="dashboard">
-                <!-- Category Budgets -->
+               
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon rule-icon">📊</div>
@@ -262,16 +257,13 @@
                     </div>
                     <div class="input-group">
                         <label for="savings-goal">Goal Amount ($):</label>
-                        <input type="number" id="savings-goal" placeholder="e.g., 2000" step="0.01">
+                        <input type="number" id="savings-goal" placeholder="2000 $" step="0.01">
                     </div>
                     <div class="input-group">
                         <label for="goal-description">Goal Description:</label>
-                        <input type="text" id="goal-description" placeholder="e.g., Vacation to Europe">
+                        <input type="text" id="goal-description" placeholder=" Vacation to Europe">
                     </div>
-                    <div class="input-group">
-                        <label for="goal-reward">Reward for achieving goal:</label>
-                        <input type="text" id="goal-reward" placeholder="e.g., Nice dinner out">
-                    </div>
+
                     <button class="btn" onclick="setSavingsGoal()">Set Goal</button>
                     
                     <div id="goal-progress" style="display: none; margin-top: 20px;">
@@ -287,7 +279,7 @@
         <!-- Analysis Tab -->
         <div id="analysis-tab" class="tab-content">
             <div class="dashboard">
-                <!-- Expense Chart -->
+                 //Expense Chart
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon savings-icon">📊</div>
@@ -369,544 +361,6 @@
         </div>
     </div>
 
-    <script>
-        // Global variables
-        let monthlyIncome = 0;
-        let expenses = [];
-        let savingsGoal = 0;
-        let goalDescription = '';
-        let goalReward = '';
-        let emergencyFund = 0;
-        let expenseChart = null;
-        let currentTab = 'overview';
-
-        // Category mappings for 50/30/20 rule
-        const categoryMappings = {
-            // Needs (50%)
-            housing: 'needs',
-            utilities: 'needs',
-            groceries: 'needs',
-            transportation: 'needs',
-            healthcare: 'needs',
-            insurance: 'needs',
-            // Wants (30%)
-            entertainment: 'wants',
-            dining: 'wants',
-            shopping: 'wants',
-            hobbies: 'wants',
-            subscriptions: 'wants',
-            // Savings (20%)
-            savings: 'savings',
-            investments: 'savings',
-            debt: 'savings'
-        };
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            loadData();
-            updateDisplay();
-            updateEmergencyFundStatus();
-        });
-
-        // Tab switching
-        function switchTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Remove active class from all tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Show selected tab content
-            document.getElementById(tabName + '-tab').classList.add('active');
-            
-            // Add active class to selected tab
-            event.target.classList.add('active');
-            
-            currentTab = tabName;
-        }
-
-        // Save data to memory (localStorage replacement)
-        function saveData() {
-            window.budgetData = {
-                monthlyIncome,
-                expenses,
-                savingsGoal,
-                goalDescription,
-                goalReward,
-                emergencyFund
-            };
-        }
-
-        // Load data from memory
-        function loadData() {
-            if (window.budgetData) {
-                const data = window.budgetData;
-                monthlyIncome = data.monthlyIncome || 0;
-                expenses = data.expenses || [];
-                savingsGoal = data.savingsGoal || 0;
-                goalDescription = data.goalDescription || '';
-                goalReward = data.goalReward || '';
-                emergencyFund = data.emergencyFund || 0;
-                
-                // Update input fields
-                document.getElementById('monthly-income').value = monthlyIncome;
-                document.getElementById('savings-goal').value = savingsGoal;
-                document.getElementById('goal-description').value = goalDescription;
-                document.getElementById('goal-reward').value = goalReward;
-                document.getElementById('emergency-fund').value = emergencyFund;
-            }
-        }
-
-        // Update income
-        function updateIncome() {
-            const income = parseFloat(document.getElementById('monthly-income').value) || 0;
-            monthlyIncome = income;
-            saveData();
-            updateDisplay();
-            updateEmergencyFundStatus();
-        }
-
-        // Update emergency fund
-        function updateEmergencyFund() {
-            const fund = parseFloat(document.getElementById('emergency-fund').value) || 0;
-            emergencyFund = fund;
-            saveData();
-            updateEmergencyFundStatus();
-        }
-
-        // Add expense
-        function addExpense() {
-            const category = document.getElementById('expense-category').value;
-            const amount = parseFloat(document.getElementById('expense-amount').value) || 0;
-            
-            if (amount > 0) {
-                expenses.push({ 
-                    category, 
-                    amount,
-                    type: categoryMappings[category] || 'wants',
-                    date: new Date().toISOString().split('T')[0]
-                });
-                document.getElementById('expense-amount').value = '';
-                saveData();
-                updateDisplay();
-                updateExpenseList();
-                updateCategoryStatus();
-            }
-        }
-
-        // Delete expense
-        function deleteExpense(index) {
-            expenses.splice(index, 1);
-            saveData();
-            updateDisplay();
-            updateExpenseList();
-            updateCategoryStatus();
-        }
-
-        // Update expense list display
-        function updateExpenseList() {
-            const list = document.getElementById('expense-list');
-            list.innerHTML = '';
-            
-            expenses.forEach((expense, index) => {
-                const item = document.createElement('div');
-                item.className = 'expense-item';
-                item.innerHTML = `
-                    <div>
-                        <span class="expense-category">${getCategoryIcon(expense.category)} ${expense.category}</span>
-                        <small style="display: block; color: #666;">${expense.type}</small>
-                    </div>
-                    <div>
-                        <span class="expense-amount">$${expense.amount.toFixed(2)}</span>
-                        <button class="delete-btn" onclick="deleteExpense(${index})">×</button>
-                    </div>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        // Get category icon
-        function getCategoryIcon(category) {
-            const icons = {
-                housing: '🏠',
-                utilities: '⚡',
-                groceries: '🛒',
-                transportation: '🚗',
-                healthcare: '🏥',
-                insurance: '🛡️',
-                entertainment: '🎬',
-                dining: '🍽️',
-                shopping: '🛍️',
-                hobbies: '🎨',
-                subscriptions: '📺',
-                savings: '💰',
-                investments: '📈',
-                debt: '💳'
-            };
-            return icons[category] || '📦';
-        }
-
-        // Set savings goal
-        function setSavingsGoal() {
-            savingsGoal = parseFloat(document.getElementById('savings-goal').value) || 0;
-            goalDescription = document.getElementById('goal-description').value || '';
-            goalReward = document.getElementById('goal-reward').value || '';
-            saveData();
-            updateDisplay();
-        }
-
-        // Update all displays
-        function updateDisplay() {
-            const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-            const monthlySavings = monthlyIncome - totalExpenses;
-            const savingsRate = monthlyIncome > 0 ? (monthlySavings / monthlyIncome) * 100 : 0;
-
-            // Update 50/30/20 rule
-            const needsTarget = monthlyIncome * 0.5;
-            const wantsTarget = monthlyIncome * 0.3;
-            const savingsTarget = monthlyIncome * 0.2;
-
-            document.getElementById('needs-amount').textContent = `${needsTarget.toFixed(0)}`;
-            document.getElementById('wants-amount').textContent = `${wantsTarget.toFixed(0)}`;
-            document.getElementById('savings-amount').textContent = `${savingsTarget.toFixed(0)}`;
-
-            // Update stats
-            document.getElementById('total-income').textContent = `${monthlyIncome.toFixed(2)}`;
-            document.getElementById('total-expenses').textContent = `${totalExpenses.toFixed(2)}`;
-            document.getElementById('monthly-savings').textContent = `${monthlySavings.toFixed(2)}`;
-            document.getElementById('savings-rate').textContent = `${savingsRate.toFixed(1)}%`;
-
-            // Update goal progress
-            updateGoalProgress(monthlySavings);
-            
-            // Update expense chart
-            updateExpenseChart();
-            
-            // Update expense list
-            updateExpenseList();
-            
-            // Generate insights
-            generateInsights(monthlyIncome, totalExpenses, monthlySavings);
-            
-            // Update category status
-            updateCategoryStatus();
-        }
-
-        // Update category status for 50/30/20 tracking
-        function updateCategoryStatus() {
-            const container = document.getElementById('category-status');
-            if (!container) return;
-
-            const needsTarget = monthlyIncome * 0.5;
-            const wantsTarget = monthlyIncome * 0.3;
-            const savingsTarget = monthlyIncome * 0.2;
-
-            // Calculate actual spending by category
-            const needsSpent = expenses.filter(e => e.type === 'needs').reduce((sum, e) => sum + e.amount, 0);
-            const wantsSpent = expenses.filter(e => e.type === 'wants').reduce((sum, e) => sum + e.amount, 0);
-            const savingsSpent = expenses.filter(e => e.type === 'savings').reduce((sum, e) => sum + e.amount, 0);
-
-            container.innerHTML = `
-                <div class="category-budget ${needsSpent > needsTarget ? 'category-over-budget' : 'category-good'}">
-                    <div>
-                        <strong>🏠 Needs (50%)</strong>
-                        <div>Spent: ${needsSpent.toFixed(2)} / Budget: ${needsTarget.toFixed(2)}</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>${needsTarget > 0 ? ((needsSpent / needsTarget) * 100).toFixed(1) : 0}%</strong>
-                        <div style="color: ${needsSpent > needsTarget ? '#f44336' : '#4CAF50'};">
-                            ${needsSpent > needsTarget ? 'Over Budget' : 'On Track'}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="category-budget ${wantsSpent > wantsTarget ? 'category-over-budget' : 'category-good'}">
-                    <div>
-                        <strong>🎬 Wants (30%)</strong>
-                        <div>Spent: ${wantsSpent.toFixed(2)} / Budget: ${wantsTarget.toFixed(2)}</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>${wantsTarget > 0 ? ((wantsSpent / wantsTarget) * 100).toFixed(1) : 0}%</strong>
-                        <div style="color: ${wantsSpent > wantsTarget ? '#f44336' : '#4CAF50'};">
-                            ${wantsSpent > wantsTarget ? 'Over Budget' : 'On Track'}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="category-budget ${savingsSpent < savingsTarget ? 'category-over-budget' : 'category-good'}">
-                    <div>
-                        <strong>💰 Savings (20%)</strong>
-                        <div>Saved: ${savingsSpent.toFixed(2)} / Target: ${savingsTarget.toFixed(2)}</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>${savingsTarget > 0 ? ((savingsSpent / savingsTarget) * 100).toFixed(1) : 0}%</strong>
-                        <div style="color: ${savingsSpent < savingsTarget ? '#f44336' : '#4CAF50'};">
-                            ${savingsSpent < savingsTarget ? 'Below Target' : 'Great!'}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Update emergency fund status
-        function updateEmergencyFundStatus() {
-            const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-            const targetEmergencyFund = totalExpenses * 6; // 6 months of expenses
-            const emergencyStatus = document.getElementById('emergency-status');
-            const emergencyAlert = document.getElementById('emergency-alert');
-            const emergencyMessage = document.getElementById('emergency-message');
-            const emergencyFill = document.getElementById('emergency-fill');
-
-            if (totalExpenses > 0) {
-                const monthsCovered = emergencyFund / totalExpenses;
-                const progressPercent = Math.min((emergencyFund / targetEmergencyFund) * 100, 100);
-
-                if (emergencyStatus) {
-                    emergencyStatus.innerHTML = `
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${progressPercent}%; background: ${monthsCovered < 3 ? '#f44336' : monthsCovered < 6 ? '#FF9800' : '#4CAF50'};"></div>
-                        </div>
-                        <p style="margin-top: 10px;">
-                            <strong>Current Fund:</strong> ${emergencyFund.toFixed(2)}<br>
-                            <strong>Target (6 months):</strong> ${targetEmergencyFund.toFixed(2)}<br>
-                            <strong>Coverage:</strong> ${monthsCovered.toFixed(1)} months
-                        </p>
-                    `;
-                }
-
-                // Show alert if emergency fund is low
-                if (monthsCovered < 3) {
-                    emergencyAlert.style.display = 'block';
-                    emergencyMessage.textContent = `Your emergency fund covers only ${monthsCovered.toFixed(1)} months of expenses. Aim for at least 3-6 months.`;
-                    emergencyFill.style.width = `${progressPercent}%`;
-                } else {
-                    emergencyAlert.style.display = 'none';
-                }
-            }
-        }
-
-        // Update goal progress
-        function updateGoalProgress(monthlySavings) {
-            const goalSection = document.getElementById('goal-progress');
-            const progressFill = document.getElementById('progress-fill');
-            const timeline = document.getElementById('goal-timeline');
-            
-            if (savingsGoal > 0 && monthlySavings > 0) {
-                goalSection.style.display = 'block';
-                const monthsToGoal = Math.ceil(savingsGoal / monthlySavings);
-                const progressPercent = Math.min((monthlySavings / savingsGoal) * 100, 100);
-                
-                progressFill.style.width = `${progressPercent}%`;
-                timeline.innerHTML = `
-                    <strong>${goalDescription || 'Your Goal'}</strong><br>
-                    💰 Target: ${savingsGoal.toFixed(2)}<br>
-                    📅 Estimated time: ${monthsToGoal} months<br>
-                    🚀 Monthly progress: ${progressPercent.toFixed(1)}%<br>
-                    ${goalReward ? `🎁 Reward: ${goalReward}` : ''}
-                `;
-            } else if (savingsGoal > 0 && monthlySavings <= 0) {
-                goalSection.style.display = 'block';
-                progressFill.style.width = '0%';
-                timeline.innerHTML = `
-                    <strong style="color: #f44336;">${goalDescription || 'Your Goal'}</strong><br>
-                    💰 Target: ${savingsGoal.toFixed(2)}<br>
-                    ⚠️ You're not currently saving money toward this goal<br>
-                    💡 Consider reducing expenses or increasing income
-                `;
-            } else {
-                goalSection.style.display = 'none';
-            }
-        }
-
-        // Update expense chart
-        function updateExpenseChart() {
-            const ctx = document.getElementById('expenseChart');
-            if (!ctx) return;
-            
-            if (expenseChart) {
-                expenseChart.destroy();
-            }
-
-            const categoryTotals = {};
-            expenses.forEach(expense => {
-                categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
-            });
-
-            const labels = Object.keys(categoryTotals);
-            const data = Object.values(categoryTotals);
-            const colors = [
-                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', 
-                '#9966FF', '#FF9F40', '#FF6384', '#36A2EB',
-                '#4CAF50', '#FFC107', '#E91E63', '#00BCD4'
-            ];
-
-            expenseChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels.map(label => getCategoryIcon(label) + ' ' + label),
-                    datasets: [{
-                        data: data,
-                        backgroundColor: colors.slice(0, labels.length),
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-
-        // What-if analysis
-        function updateWhatIf() {
-            const incomeChange = parseInt(document.getElementById('income-slider').value);
-            const expenseChange = parseInt(document.getElementById('expense-slider').value);
-            
-            document.getElementById('income-value').textContent = `${incomeChange > 0 ? '+' : ''}${incomeChange}%`;
-            document.getElementById('expense-value').textContent = `${expenseChange > 0 ? '+' : ''}${expenseChange}%`;
-            
-            const newIncome = monthlyIncome * (1 + incomeChange / 100);
-            const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-            const newExpenses = totalExpenses * (1 + expenseChange / 100);
-            const newSavings = newIncome - newExpenses;
-            const currentSavings = monthlyIncome - totalExpenses;
-            const savingsDifference = newSavings - currentSavings;
-            
-            let newGoalTimeline = '';
-            if (savingsGoal > 0 && newSavings > 0) {
-                const monthsToGoal = Math.ceil(savingsGoal / newSavings);
-                newGoalTimeline = `<br>🎯 New goal timeline: ${monthsToGoal} months`;
-            }
-            
-            const results = document.getElementById('what-if-results');
-            if (results) {
-                results.innerHTML = `
-                    <h5>Projected Results:</h5>
-                    <p><strong>New Monthly Income:</strong> ${newIncome.toFixed(2)}</p>
-                    <p><strong>New Monthly Expenses:</strong> ${newExpenses.toFixed(2)}</p>
-                    <p><strong>New Monthly Savings:</strong> ${newSavings.toFixed(2)}</p>
-                    <p><strong>Savings Change:</strong> <span style="color: ${savingsDifference >= 0 ? 'green' : 'red'}">
-                        ${savingsDifference >= 0 ? '+' : ''}${savingsDifference.toFixed(2)}</span></p>
-                    ${newGoalTimeline}
-                    <div style="margin-top: 15px; padding: 15px; background: #f0f8ff; border-radius: 8px;">
-                        <strong>💡 Action Items:</strong><br>
-                        ${savingsDifference > 0 ? 
-                            '✅ This change would improve your financial position!' : 
-                            '⚠️ Consider ways to reduce expenses or increase income'}
-                    </div>
-                `;
-            }
-        }
-
-        // Generate comprehensive insights
-        function generateInsights(income, totalExpenses, savings) {
-            const container = document.getElementById('insights-container');
-            if (!container) return;
-            
-            const insights = [];
-            
-            // 50/30/20 Rule Analysis
-            const needsSpent = expenses.filter(e => e.type === 'needs').reduce((sum, e) => sum + e.amount, 0);
-            const wantsSpent = expenses.filter(e => e.type === 'wants').reduce((sum, e) => sum + e.amount, 0);
-            const savingsSpent = expenses.filter(e => e.type === 'savings').reduce((sum, e) => sum + e.amount, 0);
-            
-            const needsTarget = income * 0.5;
-            const wantsTarget = income * 0.3;
-            const savingsTarget = income * 0.2;
-
-            if (needsSpent > needsTarget) {
-                insights.push({
-                    title: '🏠 Needs Budget Exceeded',
-                    content: `You're spending ${(needsSpent - needsTarget).toFixed(2)} more than recommended on needs. Look for ways to reduce housing, utilities, or transportation costs.`
-                });
-            }
-
-            if (wantsSpent > wantsTarget) {
-                insights.push({
-                    title: '🎬 Wants Budget Exceeded',
-                    content: `You're spending ${(wantsSpent - wantsTarget).toFixed(2)} more than recommended on wants. Consider cutting back on entertainment, dining out, or subscriptions.`
-                });
-            }
-
-            if (savingsSpent < savingsTarget) {
-                insights.push({
-                    title: '💰 Savings Below Target',
-                    content: `You're saving ${(savingsTarget - savingsSpent).toFixed(2)} less than the recommended 20%. Try automating transfers to a separate savings account.`
-                });
-            }
-
-            // Cash Flow Analysis
-            if (savings < 0) {
-                insights.push({
-                    title: '⚠️ Negative Cash Flow',
-                    content: `You're spending ${Math.abs(savings).toFixed(2)} more than you earn. Immediate action needed: reduce expenses or increase income.`
-                });
-            } else if (savings > 0 && savings < income * 0.1) {
-                insights.push({
-                    title: '📊 Low Savings Rate',
-                    content: `Your savings rate is only ${((savings/income)*100).toFixed(1)}%. Aim for at least 20% to build wealth over time.`
-                });
-            }
-
-            // Emergency Fund Analysis
-            const monthsCovered = totalExpenses > 0 ? emergencyFund / totalExpenses : 0;
-            if (monthsCovered < 3) {
-                insights.push({
-                    title: '🛡️ Emergency Fund Priority',
-                    content: `Your emergency fund covers only ${monthsCovered.toFixed(1)} months of expenses. Build this to 3-6 months before other investments.`
-                });
-            }
-
-            // Spending Pattern Analysis
-            const largestCategory = expenses.reduce((max, expense) => {
-                const categoryTotal = expenses.filter(e => e.category === expense.category)
-                    .reduce((sum, e) => sum + e.amount, 0);
-                return categoryTotal > max.amount ? {category: expense.category, amount: categoryTotal} : max;
-            }, {category: '', amount: 0});
-
-            if (largestCategory.amount > 0) {
-                insights.push({
-                    title: '📈 Largest Expense Category',
-                    content: `${getCategoryIcon(largestCategory.category)} ${largestCategory.category} is your largest expense at ${largestCategory.amount.toFixed(2)}/month. Consider if this aligns with your priorities.`
-                });
-            }
-
-            // Automation Recommendations
-            if (savings > 0) {
-                insights.push({
-                    title: '🤖 Automation Opportunity',
-                    content: `You're saving ${savings.toFixed(2)}/month. Set up automatic transfers to make saving effortless and avoid spending this money accidentally.`
-                });
-            }
-
-            // Render insights
-            container.innerHTML = '';
-            if (insights.length === 0) {
-                container.innerHTML = '<div class="insight-item"><h5>🎉 Excellent Financial Health!</h5><p>Your budget follows sound financial principles. Keep up the great work!</p></div>';
-            } else {
-                insights.forEach(insight => {
-                    const div = document.createElement('div');
-                    div.className = 'insight-item';
-                    div.innerHTML = `
-                        <h5>${insight.title}</h5>
-                        <p>${insight.content}</p>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-        }
-
-        // Initialize sliders
-        document.getElementById('income-slider')?.addEventListener('input', updateWhatIf);
-        document.getElementById('expense-slider')?.addEventListener('input', updateWhatIf);
-    </script>
+    <script src="script.js"></script> 
 </body>
 </html>

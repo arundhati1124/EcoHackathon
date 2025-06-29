@@ -152,6 +152,24 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
         }
+        .button{
+            background: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+            
+ 
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
 
         .rule-breakdown {
             display: flex;
@@ -369,7 +387,7 @@
         }
 
         .deposit-item {
-            background: #f8f9fa;
+            background: #dae3ee;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
@@ -377,13 +395,13 @@
         }
 
         .collapsible {
-            background: #f1f1f1;
-            color: #444;
+            background: #4bacfb;
+            color: #ffffff;
             cursor: pointer;
-            padding: 15px;
+            padding: 12px;
             width: 100%;
             border: none;
-            text-align: left;
+            text-align: center;
             outline: none;
             font-size: 16px;
             font-weight: 600;
@@ -393,12 +411,12 @@
         }
 
         .collapsible:hover {
-            background: #ddd;
+            background: #c4c8dd;
         }
 
         .collapsible.active {
             background: #2196F3;
-            color: white;
+            color: rgb(255, 255, 255);
         }
 
         .collapsible-content {
@@ -436,3 +454,4 @@
                 min-width: 50%;
             }
         }
+        
