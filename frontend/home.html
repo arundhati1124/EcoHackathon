@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 EcoBudget</h1>
+            <h1>📊 SmartSpend</h1>
             <p>Smart Budget Management with Microeconomic Principles</p>
         </div>
 
@@ -181,57 +181,78 @@
                     <div id="deposits-list" style="margin-top: 20px;"></div>
                 </div>
 
-                <!-- Stock Investment Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon investment-icon">📈</div>
-                        <h3>Stock Analysis</h3>
-                    </div>
-                    <div class="two-column">
-                        <div class="input-group">
-                            <label for="stock-symbol">Stock Symbol:</label>
-                            <input type="text" id="stock-symbol" placeholder="AAPL" style="text-transform: uppercase;">
-                        </div>
-                        <div class="input-group">
-                            <label for="stock-shares">Number of Shares:</label>
-                            <input type="number" id="stock-shares" placeholder="10 $" step="0.01">
-                        </div>
-                    </div>
-                    <div class="two-column">
-                        <div class="input-group">
-                            <label for="stock-price">Purchase Price per Share ($):</label>
-                            <input type="number" id="stock-price" placeholder="150.00 $" step="0.01">
-                        </div>
-                        <div class="input-group">
-                            <label for="stock-current-price">Current Price per Share ($):</label>
-                            <input type="number" id="stock-current-price" placeholder="155.00 $" step="0.01">
-                        </div>
-                       
-                    </div>
-                    <button class="btn" onclick="addStock()">Count Stock</button>
-                    
-                    <div id="stocks-list" style="margin-top: 20px;"></div>
-                    
-                    <div class="stats-grid" style="margin-top: 20px;">
-                        <div class="stat-item">
-                            <div class="stat-value" id="total-investment">$0</div>
-                            <div class="stat-label">Total Invested</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="total-value">$0</div>
-                            <div class="stat-label">Current Value</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="total-gain-loss">$0</div>
-                            <div class="stat-label">Gain/Loss</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="portfolio-return">0%</div>
-                            <div class="stat-label">Portfolio Return</div>
-                        </div>
-                        
-                        <a href="stock2.html" class="button">Current Price</a>
-                    
+<!-- Stock Investment Card -----------------------Stock.html-->
+<div class="card">
+  <div class="card-header">
+    <div class="card-icon investment-icon">📈</div>
+    <h3>Stock Analysis</h3>
+  </div>
+  <div class="two-column">
+    <div class="input-group">
+      <label for="stock-symbol">Stock Symbol:</label>
+      <input type="text" id="stock-symbol" placeholder="AAPL" style="text-transform: uppercase;">
+    </div>
+    <div class="input-group">
+      <label for="stock-shares">Number of Shares:</label>
+      <input type="number" id="stock-shares" placeholder="10" step="0.01">
+    </div>
+  </div>
+  <div class="two-column">
+    <div class="input-group">
+      <label for="stock-price">Purchase Price per Share ($):</label>
+      <input type="number" id="stock-price" placeholder="150.00" step="0.01">
+    </div>
+    <div class="input-group">
+      <label for="stock-current-price">Current Price per Share ($):</label>
+      <input type="number" id="stock-current-price" placeholder="155.00" step="0.01">
+    </div>
+  </div>
+  <button class="btn" onclick="addStock()">Add Stock</button>
+
+  <!-- Collapsible -->
+  <button class="collapsible" onclick="toggleCollapsible(this)">📊 Current Stock Portfolio</button>
+  <div class="collapsible-content" id="stock-portfolio-content">
+    <div id="stocks-list" style="margin-top: 20px;"></div>
+    <div class="stats-grid" style="margin-top: 20px;">
+      <div class="stat-item">
+        <div class="stat-value" id="total-investment">$0</div>
+        <div class="stat-label">Total Invested</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="total-value">$0</div>
+        <div class="stat-label">Current Value</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="total-gain-loss">$0</div>
+        <div class="stat-label">Gain/Loss</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="portfolio-return">0%</div>
+        <div class="stat-label">Portfolio Return</div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="toggleStockTable()">🔽 Show Stock Table</button>
+    <div id="stock-table-section" style="display: none; margin-top: 20px;">
+      <input type="text" id="stock-search" placeholder="Search stock ">
+      <button onclick="searchStock()">Search</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Change %</th>
+          </tr>
+        </thead>
+        <tbody id="stock-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!------------------------------------------------------Stock.html------>
+
                     </div>
                 </div>
             </div>
@@ -279,7 +300,6 @@
         <!-- Analysis Tab -->
         <div id="analysis-tab" class="tab-content">
             <div class="dashboard">
-                 //Expense Chart
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon savings-icon">📊</div>
@@ -324,10 +344,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon automation-icon">🤖</div>
-                        <h3>Automation Recommendations</h3>
+                        <h3>Recommendations</h3>
                     </div>
                     <div class="automation-tips">
-                        <h5>🎯 Recommended Automation Steps:</h5>
+                        <h5>🎯 Recommended Steps:</h5>
                         <ul id="automation-list">
                             <li>📱 <strong>Set up automatic transfers:</strong> Move savings to separate account immediately after payday</li>
                             <li>💳 <strong>Automate bill payments:</strong> Avoid late fees and maintain good credit</li>

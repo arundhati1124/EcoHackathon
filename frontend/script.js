@@ -671,6 +671,53 @@ function updateExpenseChart() {
     }
 }
 
+  const apiKey = "91MEGZTUH03AGAJ6";
+
+  function toggleStockTable() {
+    const section = document.getElementById("stock-table-section");
+    section.style.display = section.style.display === "none" ? "block" : "none";
+  }
+
+  function searchStock() {
+    const symbol = document.getElementById("stock-search").value.toUpperCase();
+    const tbody = document.getElementById("stock-table-body");
+    
+    if (!symbol) {
+      alert("Please enter a stock symbol to search.");
+      return;
+    }
+
+    tbody.innerHTML = "<tr><td colspan='5'>Searching...</td></tr>";
+
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`)
+      .then(res => res.json())
+      .then(data => {
+        const q = data["Global Quote"];
+        if (!q || !q["01. symbol"]) {
+          tbody.innerHTML = `<tr><td colspan="5">Stock not found.</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = `
+          <tr>
+            <td>${q["01. symbol"]}</td>
+            <td>${q["05. price"]}</td>
+            <td>${q["03. high"]}</td>
+            <td>${q["04. low"]}</td>
+            <td>${q["10. change percent"]}</td>
+          </tr>`;
+      })
+      .catch(error => {
+        console.error("Error fetching stock data:", error);
+        tbody.innerHTML = `<tr><td colspan="5">Error fetching data.</td></tr>`;
+      });
+  }
+
+//collapsible
+function toggleCollapsible(element) {
+    element.classList.toggle("active");
+    const content = element.nextElementSibling;
+    content.classList.toggle("active");
+}
 // What-if analysis
 function updateWhatIf() {
     const incomeSlider = document.getElementById('income-slider');
