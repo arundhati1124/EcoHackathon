@@ -115,17 +115,39 @@ function loadData() {
         if (bankInput) bankInput.value = bankBalance;
     }
 }
-// (bank savings + stock gains)
-function calculateAvailableSavings() {
-    const bankSavings = Math.max(0, bankBalance - emergencyFund);
+// Calculate total emergency fund (bank balance + total deposit values)
+function calculateTotalEmergencyFund() {
+    const totalDepositValue = deposits.reduce((total, deposit) => {
+        return total + deposit.maturityValue;
+    }, 0);
     
-  
+    return bankBalance + totalDepositValue;
+}
+function calculateAvailableSavings() {
+    const currentDate = new Date();
+    const bankSavings = Math.max(0, bankBalance);
+    
+    // Calculate stock gains (only positive gains)
     const stockGains = stocks.reduce((total, stock) => {
         return total + Math.max(0, stock.gainLoss);
     }, 0);
     
-    return bankSavings + stockGains;
+    // Calculate mature deposits
+    const matureDeposits = deposits.reduce((total, deposit) => {
+        const depositDate = new Date(deposit.date);
+        const maturityDate = new Date(depositDate);
+        maturityDate.setFullYear(maturityDate.getFullYear() + deposit.term);
+        
+        // If deposit has matured, add its maturity value
+        if (currentDate >= maturityDate) {
+            return total + deposit.maturityValue;
+        }
+        return total;
+    }, 0);
+    
+    return bankSavings + stockGains + matureDeposits;
 }
+
 
 // Update income
 function updateIncome() {
@@ -148,6 +170,7 @@ function updateBankBalance() {
         saveData();
         updateBankDisplay();
         updateDisplay();
+        updateEmergencyFundStatus();
     }
 }
 
@@ -180,6 +203,7 @@ function addExpense() {
             updateDisplay();
             updateExpenseList();
             updateCategoryStatus();
+            updateEmergencyFundStatus();
         }
     }
 }
@@ -598,10 +622,7 @@ function updateGoalProgress(monthlySavings) {
             } else {
                 timelineContent += `🎉 <strong style="color: #4CAF50;">Goal Achieved!</strong><br>`;
             }
-            
-            if (goalReward) {
-                timelineContent += `🎁 Reward: ${goalReward}`;
-            }
+
             
             // Add breakdown of available savings
             const bankSavings = Math.max(0, bankBalance - emergencyFund);
@@ -814,14 +835,16 @@ function updateWhatIf() {
                 });
             }
 
-            // Emergency Fund Analysis
-            const monthsCovered = totalExpenses > 0 ? emergencyFund / totalExpenses : 0;
-            if (monthsCovered < 3) {
-                insights.push({
-                    title: '🛡️ Emergency Fund Priority',
-                    content: `Your emergency fund covers only ${monthsCovered.toFixed(1)} months of expenses. Build this to 3-6 months before other investments.`
-                });
-            }
+        // Emergency Fund Analysis
+        const totalEmergencyFund = calculateTotalEmergencyFund();
+        const monthsCovered = totalExpenses > 0 ? totalEmergencyFund / totalExpenses : 0;
+
+                 if (monthsCovered < 3) {
+                    insights.push({
+                      title: '🛡️ Emergency Fund Priority',
+                      content: `Your emergency fund covers only ${monthsCovered.toFixed(1)} months of expenses. Build this to 3-6 months before other investments.`
+                      });
+                     }
 
             // Spending Pattern Analysis
             const largestCategory = expenses.reduce((max, expense) => {

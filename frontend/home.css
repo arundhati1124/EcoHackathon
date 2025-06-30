@@ -7,7 +7,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #7e93ef 0%, #a273d1 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -15,14 +15,14 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgb(184, 186, 228);
+            background: rgb(187, 203, 237);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            background: linear-gradient(135deg, #216ef3 0%, #21CBF3 100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -136,7 +136,7 @@
         }
 .btn,
 .button {
-    background: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+    background: linear-gradient(135deg, #216ef3 0%, #21CBF3 100%);
     color: white;
     border: none;
     padding: 12px 24px;
